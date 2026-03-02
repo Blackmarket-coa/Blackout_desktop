@@ -1,0 +1,41 @@
+name: Integration Guard
+
+on:
+  pull_request:
+  push:
+    branches: [work, main]
+
+jobs:
+  config-and-submodule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+        with:
+          submodules: true
+
+      - name: Setup node
+        uses: actions/setup-node@v6.2.0
+        with:
+          node-version: 24.13.1
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate config schema
+        run: npm run validate:config
+
+      - name: Ensure submodule URL targets blackout
+        run: |
+          expected='https://github.com/Blackmarket-coa/blackout.git'
+          actual="$(git config -f .gitmodules --get submodule.cinny.url)"
+          test "$actual" = "$expected"
+
+      - name: Ensure submodule is initialized in CI checkout
+        run: |
+          git submodule status --recursive
+          if git submodule status --recursive | grep -q '^-'; then
+            echo "Submodule not initialized"
+            exit 1
+          fi
