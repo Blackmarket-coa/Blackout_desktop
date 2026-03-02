@@ -41,21 +41,21 @@ jobs:
           echo "${Env:TAURI_VERSION}"
         shell: pwsh
       - name: Move msi
-        run: Move-Item "src-tauri\target\release\bundle\msi\Cinny_${{ env.TAURI_VERSION }}_x64_en-US.msi" "src-tauri\target\release\bundle\msi\Cinny_desktop-x86_64.msi"
+        run: Move-Item "src-tauri\target\release\bundle\msi\Blackout_${{ env.TAURI_VERSION }}_x64_en-US.msi" "src-tauri\target\release\bundle\msi\Blackout_desktop-x86_64.msi"
         shell: pwsh
       - name: Move msi.zip
-        run: Move-Item "src-tauri\target\release\bundle\msi\Cinny_${{ env.TAURI_VERSION }}_x64_en-US.msi.zip" "src-tauri\target\release\bundle\msi\Cinny_desktop-x86_64.msi.zip"
+        run: Move-Item "src-tauri\target\release\bundle\msi\Blackout_${{ env.TAURI_VERSION }}_x64_en-US.msi.zip" "src-tauri\target\release\bundle\msi\Blackout_desktop-x86_64.msi.zip"
         shell: pwsh
       - name: Move msi.zip.sig
-        run: Move-Item "src-tauri\target\release\bundle\msi\Cinny_${{ env.TAURI_VERSION }}_x64_en-US.msi.zip.sig" "src-tauri\target\release\bundle\msi\Cinny_desktop-x86_64.msi.zip.sig"
+        run: Move-Item "src-tauri\target\release\bundle\msi\Blackout_${{ env.TAURI_VERSION }}_x64_en-US.msi.zip.sig" "src-tauri\target\release\bundle\msi\Blackout_desktop-x86_64.msi.zip.sig"
         shell: pwsh
       - name: Upload tagged release
         uses: softprops/action-gh-release@6cbd405e2c4e67a21c47fa9e383d020e4e28b836
         with:
           files: |
-            src-tauri/target/release/bundle/msi/Cinny_desktop-x86_64.msi
-            src-tauri/target/release/bundle/msi/Cinny_desktop-x86_64.msi.zip
-            src-tauri/target/release/bundle/msi/Cinny_desktop-x86_64.msi.zip.sig
+            src-tauri/target/release/bundle/msi/Blackout_desktop-x86_64.msi
+            src-tauri/target/release/bundle/msi/Blackout_desktop-x86_64.msi.zip
+            src-tauri/target/release/bundle/msi/Blackout_desktop-x86_64.msi.zip.sig
 
   # Linux-x86_64
   linux-x86_64:
@@ -93,21 +93,21 @@ jobs:
         id: vars
         run: echo "tag=$(jq .package.version src-tauri/tauri.conf.json | tr -d '"')" >> $GITHUB_OUTPUT
       - name: Move deb
-        run: mv "src-tauri/target/release/bundle/deb/cinny_${{ steps.vars.outputs.tag }}_amd64.deb" "src-tauri/target/release/bundle/deb/Cinny_desktop-x86_64.deb"
+        run: mv "src-tauri/target/release/bundle/deb/blackout_${{ steps.vars.outputs.tag }}_amd64.deb" "src-tauri/target/release/bundle/deb/Blackout_desktop-x86_64.deb"
       - name: Move AppImage
-        run: mv "src-tauri/target/release/bundle/appimage/cinny_${{ steps.vars.outputs.tag }}_amd64.AppImage" "src-tauri/target/release/bundle/appimage/Cinny_desktop-x86_64.AppImage"
+        run: mv "src-tauri/target/release/bundle/appimage/blackout_${{ steps.vars.outputs.tag }}_amd64.AppImage" "src-tauri/target/release/bundle/appimage/Blackout_desktop-x86_64.AppImage"
       - name: Move AppImage.tar.gz
-        run: mv "src-tauri/target/release/bundle/appimage/cinny_${{ steps.vars.outputs.tag }}_amd64.AppImage.tar.gz" "src-tauri/target/release/bundle/appimage/Cinny_desktop-x86_64.AppImage.tar.gz"
+        run: mv "src-tauri/target/release/bundle/appimage/blackout_${{ steps.vars.outputs.tag }}_amd64.AppImage.tar.gz" "src-tauri/target/release/bundle/appimage/Blackout_desktop-x86_64.AppImage.tar.gz"
       - name: Move AppImage.tar.gz.sig
-        run: mv "src-tauri/target/release/bundle/appimage/cinny_${{ steps.vars.outputs.tag }}_amd64.AppImage.tar.gz.sig" "src-tauri/target/release/bundle/appimage/Cinny_desktop-x86_64.AppImage.tar.gz.sig"
+        run: mv "src-tauri/target/release/bundle/appimage/blackout_${{ steps.vars.outputs.tag }}_amd64.AppImage.tar.gz.sig" "src-tauri/target/release/bundle/appimage/Blackout_desktop-x86_64.AppImage.tar.gz.sig"
       - name: Upload tagged release
         uses: softprops/action-gh-release@6cbd405e2c4e67a21c47fa9e383d020e4e28b836
         with:
           files: |
-            src-tauri/target/release/bundle/deb/Cinny_desktop-x86_64.deb
-            src-tauri/target/release/bundle/appimage/Cinny_desktop-x86_64.AppImage
-            src-tauri/target/release/bundle/appimage/Cinny_desktop-x86_64.AppImage.tar.gz
-            src-tauri/target/release/bundle/appimage/Cinny_desktop-x86_64.AppImage.tar.gz.sig
+            src-tauri/target/release/bundle/deb/Blackout_desktop-x86_64.deb
+            src-tauri/target/release/bundle/appimage/Blackout_desktop-x86_64.AppImage
+            src-tauri/target/release/bundle/appimage/Blackout_desktop-x86_64.AppImage.tar.gz
+            src-tauri/target/release/bundle/appimage/Blackout_desktop-x86_64.AppImage.tar.gz.sig
 
   # macos-universal
   macos-universal:
@@ -144,18 +144,18 @@ jobs:
         id: vars
         run: echo "tag=$(jq .package.version src-tauri/tauri.conf.json | tr -d '"')" >> $GITHUB_OUTPUT
       - name: Move dmg
-        run: mv "src-tauri/target/universal-apple-darwin/release/bundle/dmg/Cinny_${{ steps.vars.outputs.tag }}_universal.dmg" "src-tauri/target/universal-apple-darwin/release/bundle/dmg/Cinny_desktop-universal.dmg"
+        run: mv "src-tauri/target/universal-apple-darwin/release/bundle/dmg/Blackout_${{ steps.vars.outputs.tag }}_universal.dmg" "src-tauri/target/universal-apple-darwin/release/bundle/dmg/Blackout_desktop-universal.dmg"
       - name: Move app.tar.gz
-        run: mv "src-tauri/target/universal-apple-darwin/release/bundle/macos/Cinny.app.tar.gz" "src-tauri/target/universal-apple-darwin/release/bundle/macos/Cinny_desktop-universal.app.tar.gz"
+        run: mv "src-tauri/target/universal-apple-darwin/release/bundle/macos/Blackout.app.tar.gz" "src-tauri/target/universal-apple-darwin/release/bundle/macos/Blackout_desktop-universal.app.tar.gz"
       - name: Move app.tar.gz.sig
-        run: mv "src-tauri/target/universal-apple-darwin/release/bundle/macos/Cinny.app.tar.gz.sig" "src-tauri/target/universal-apple-darwin/release/bundle/macos/Cinny_desktop-universal.app.tar.gz.sig"
+        run: mv "src-tauri/target/universal-apple-darwin/release/bundle/macos/Blackout.app.tar.gz.sig" "src-tauri/target/universal-apple-darwin/release/bundle/macos/Blackout_desktop-universal.app.tar.gz.sig"
       - name: Upload tagged release
         uses: softprops/action-gh-release@6cbd405e2c4e67a21c47fa9e383d020e4e28b836
         with:
           files: |
-            src-tauri/target/universal-apple-darwin/release/bundle/dmg/Cinny_desktop-universal.dmg
-            src-tauri/target/universal-apple-darwin/release/bundle/macos/Cinny_desktop-universal.app.tar.gz
-            src-tauri/target/universal-apple-darwin/release/bundle/macos/Cinny_desktop-universal.app.tar.gz.sig
+            src-tauri/target/universal-apple-darwin/release/bundle/dmg/Blackout_desktop-universal.dmg
+            src-tauri/target/universal-apple-darwin/release/bundle/macos/Blackout_desktop-universal.app.tar.gz
+            src-tauri/target/universal-apple-darwin/release/bundle/macos/Blackout_desktop-universal.app.tar.gz.sig
 
   # Upload release.json
   release-update:
