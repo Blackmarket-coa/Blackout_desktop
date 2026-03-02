@@ -1,6 +1,6 @@
 {
   "package": {
-    "productName": "Cinny",
+    "productName": "Blackout",
     "version": "4.10.5"
   },
   "build": {
@@ -13,7 +13,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "in.cinny.app",
+      "identifier": "coa.blackmarket.blackout",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -25,7 +25,7 @@
       "externalBin": [],
       "copyright": "",
       "category": "SocialNetworking",
-      "shortDescription": "Yet another matrix client",
+      "shortDescription": "Blackout secure matrix client",
       "longDescription": "",
       "deb": {
         "depends": []
@@ -51,7 +51,7 @@
     "updater": {
       "active": true,
       "endpoints": [
-          "https://github.com/cinnyapp/cinny-desktop/releases/download/tauri/release.json"
+          "https://github.com/Blackmarket-coa/Blackout_desktop/releases/download/tauri/release.json"
       ],
       "dialog": true,
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDE2NDc3NDBGMTAzNTk1NUYKUldSZmxUVVFEM1JIRnRuMjVRTkFOQ21lUFI5KzRMU0s4OWtBS1RNRUVCNE9LcE9GcExNZ2M2NHoK"
@@ -61,7 +61,7 @@
     },
     "windows": [
       {
-        "title": "Cinny",
+        "title": "Blackout",
         "width": 1280,
         "height": 905,
         "center": true,

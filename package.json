@@ -1,7 +1,7 @@
 {
-  "name": "cinny",
+  "name": "blackout-desktop",
   "version": "4.10.5",
-  "description": "Yet another matrix client",
+  "description": "Blackout desktop client",
   "main": "index.js",
   "engines": {
     "node": ">=16.0.0"
