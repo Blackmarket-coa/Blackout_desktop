@@ -11,7 +11,8 @@
     "release": "node scripts/release.mjs",
     "validate:config": "node scripts/validate-config.mjs",
     "smoke:backend": "node scripts/smoke-backend.mjs",
-    "smoke:stego": "node scripts/stego-roundtrip-smoke.mjs"
+    "smoke:stego": "node scripts/stego-roundtrip-smoke.mjs",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "Ajay Bura",

@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.2
-        with:
-          submodules: true
 
       - name: Setup node
         uses: actions/setup-node@v6.2.0
@@ -32,10 +30,8 @@ jobs:
           actual="$(git config -f .gitmodules --get submodule.cinny.url)"
           test "$actual" = "$expected"
 
-      - name: Ensure submodule is initialized in CI checkout
+      - name: Initialize cinny submodule from remote HEAD
         run: |
-          git submodule status --recursive
-          if git submodule status --recursive | grep -q '^-'; then
-            echo "Submodule not initialized"
-            exit 1
-          fi
+          git submodule sync --recursive
+          git submodule update --init --remote --depth 1 cinny
+          git -C cinny rev-parse --short HEAD
