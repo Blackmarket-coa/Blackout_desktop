@@ -15,8 +15,6 @@ jobs:
         uses: cla-assistant/github-action@v2.6.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # the below token should have repo scope and must be manually added by you in the repository's secret
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.CLA_PAT }}
         with:
           path-to-signatures: 'signatures.json'
           path-to-document: 'https://github.com/cinnyapp/cla/blob/main/cla.md' # e.g. a CLA or a DCO document
@@ -24,9 +22,7 @@ jobs:
           branch: 'main'
           allowlist: ajbura,bot*
 
-          #below are the optional inputs - If the optional inputs are not given, then default values will be taken
-          remote-organization-name: cinnyapp
-          remote-repository-name: cla
+          # Keep signatures in this repository so the default GITHUB_TOKEN is sufficient.
           #create-file-commit-message: 'For example: Creating file for storing CLA Signatures'
           #signed-commit-message: 'For example: $contributorName has signed the CLA in #$pullRequestNo'
           #custom-notsigned-prcomment: 'pull request comment with Introductory message to ask new contributors to sign'
