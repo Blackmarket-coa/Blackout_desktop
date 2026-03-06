@@ -5,6 +5,10 @@ on:
   pull_request_target:
     types: [opened, closed, synchronize]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   CLAssistant:
     runs-on: ubuntu-latest
@@ -15,12 +19,13 @@ jobs:
         uses: cla-assistant/github-action@v2.6.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.CLA_PAT || secrets.GITHUB_TOKEN }}
         with:
           path-to-signatures: 'signatures.json'
           path-to-document: 'https://github.com/cinnyapp/cla/blob/main/cla.md' # e.g. a CLA or a DCO document
           # branch should not be protected
           branch: 'main'
-          allowlist: ajbura,bot*
+          allowlist: ajbura,codex,bot*,github-actions[bot],renovate[bot],dependabot[bot]
 
           # Keep signatures in this repository so the default GITHUB_TOKEN is sufficient.
           #create-file-commit-message: 'For example: Creating file for storing CLA Signatures'
