@@ -9,8 +9,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6.0.2
-        with:
-          submodules: true
+      - name: Initialize cinny submodule from remote HEAD
+        run: |
+          git submodule sync --recursive
+          git submodule update --init --remote --depth 1 cinny
       - name: Create zip including submodules
         run: |
           cd ..
